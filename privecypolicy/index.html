@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BodyBuddy – Privacy Policy</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #1a2030;
+      --surface:  #252d3a;
+      --inner:    #2c3545;
+      --green:    #96C828;
+      --muted:    #516070;
+      --text:     #c8d0db;
+      --heading:  #ffffff;
+      --radius:   16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ───── SPLASH ───── */
+    #splash {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      gap: 24px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #splash.hidden { opacity: 0; visibility: hidden; }
+
+    .splash-subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fade-in 0.4s ease 0.97s forwards;
+    }
+
+    /* ───── STICKY HEADER ───── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      background: rgba(26, 32, 48, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(150, 200, 40, 0.15);
+    }
+    .header-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ───── MAIN ───── */
+    main {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* ───── HERO INSIDE MAIN ───── */
+    .page-hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .page-hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      color: var(--heading);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .page-hero h1 span { color: var(--green); }
+    .date-badge {
+      display: inline-block;
+      background: rgba(150, 200, 40, 0.15);
+      color: var(--green);
+      border: 1px solid rgba(150, 200, 40, 0.35);
+      border-radius: 999px;
+      padding: 4px 16px;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      margin-top: 12px;
+    }
+
+    /* ───── CARDS ───── */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+    .card h2 {
+      color: var(--heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card h2::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--green) 0%, transparent 100%);
+      border-radius: 999px;
+    }
+    .card p { margin-bottom: 12px; }
+    .card p:last-child { margin-bottom: 0; }
+    .card ul {
+      padding-left: 20px;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card ul li::marker { color: var(--green); }
+
+    a {
+      color: var(--green);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      background: rgba(150, 200, 40, 0.12);
+      border: 1px solid rgba(150, 200, 40, 0.4);
+      border-radius: 999px;
+      padding: 8px 22px;
+      color: var(--green);
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .contact-btn:hover {
+      background: rgba(150, 200, 40, 0.22);
+      text-decoration: none;
+    }
+    .contact-btn svg { flex-shrink: 0; }
+
+    .info-chip {
+      display: inline-block;
+      background: var(--inner);
+      border-radius: 999px;
+      padding: 3px 12px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin: 4px 4px 4px 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    /* ───── LOGO SVG ANIMATIONS ───── */
+    @keyframes slide-left {
+      from { opacity: 0; transform: translateX(-40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slide-right {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scale-in {
+      from { opacity: 0; transform: scale(0.3); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slide-up {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fade-in {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* Each group starts invisible and animates in */
+    .logo-left-b,
+    .logo-right-b,
+    .logo-upper-conn,
+    .logo-lower-conn,
+    .logo-text {
+      opacity: 0;
+    }
+    .logo-left-b {
+      animation: slide-left 0.4s cubic-bezier(.4,0,.2,1) 0ms forwards;
+    }
+    .logo-right-b {
+      animation: slide-right 0.4s cubic-bezier(.4,0,.2,1) 150ms forwards;
+    }
+    .logo-upper-conn {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: scale-in 0.35s cubic-bezier(.34,1.56,.64,1) 300ms forwards;
+    }
+    .logo-lower-conn {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: scale-in 0.35s cubic-bezier(.34,1.56,.64,1) 420ms forwards;
+    }
+    .logo-text {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: slide-up 0.4s cubic-bezier(.4,0,.2,1) 570ms forwards;
+    }
+
+    /* Small header logo – no animation replay */
+    .header-logo .logo-left-b,
+    .header-logo .logo-right-b,
+    .header-logo .logo-upper-conn,
+    .header-logo .logo-lower-conn,
+    .header-logo .logo-text {
+      opacity: 1;
+      animation: none;
+    }
+
+    @media (max-width: 500px) {
+      .card { padding: 20px 18px; }
+      header { padding: 8px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ SPLASH ═══════════════ -->
+<div id="splash">
+  <svg class="logo-splash" width="259" height="300" viewBox="0 0 717 830" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="logo-left-b">
+      <path d="M624.163 356.05C624.163 356.05 657.694 325.231 663.672 309.531C672.416 286.599 670.886 205.878 670.886 205.878C670.867 184.64 659.54 165.021 641.141 154.437L387.313 8.19626C368.915 -2.38839 346.256 -2.36874 327.914 8.24777L74.3022 154.928C55.9224 165.582 44.6289 185.22 44.6473 206.421L44.9013 499.417C44.9197 520.656 56.2473 540.274 74.6456 550.859L328.474 697.137C346.872 707.721 369.531 707.702 387.873 697.085L641.447 550.367C659.827 539.751 671.121 520.113 671.102 498.874C671.102 498.874 668.825 420.514 663.975 399.991C657.736 373.626 624.126 356.05 624.126 356.05L624.163 356.05ZM578.538 519.107L380.735 628.169C362.767 638.56 340.67 638.842 322.46 628.856L127.054 521.821C107.607 511.162 95.7164 490.608 96.1841 468.47L100.822 245.703C101.254 224.951 112.51 205.913 130.478 195.522L335.015 77.1643C352.983 66.7728 375.079 66.4915 393.29 76.477L588.696 183.512C605.369 191.027 609.201 204.958 611.43 226.719C611.43 226.719 611.789 252.377 611.048 261.78C608.899 288.677 601.028 324.343 526.611 326.056C522.716 326.134 519.573 329.321 519.577 333.217L519.616 378.841C519.62 383.073 523.256 386.366 527.487 385.988C546.998 384.211 596.884 383.83 607.481 424.276C614.019 449.255 612.953 472.255 607.386 487.393C603.762 497.285 587.971 513.705 578.538 519.144L578.538 519.107Z" fill="#516070"/>
+    </g>
+    <g class="logo-upper-conn">
+      <path d="M283.792 276.638C286.162 276.636 288.078 279.099 288.081 282.151L288.112 317.829C288.113 319.649 289.264 321.127 290.677 321.126L406.577 321.026C407.99 321.024 409.137 319.544 409.135 317.724L409.104 282.046C409.102 278.994 411.014 276.528 413.385 276.525L456.47 276.488C458.84 276.486 460.757 278.949 460.76 282.001L460.778 302.874C460.779 304.694 461.929 306.172 463.342 306.171L481.278 306.155C483.648 306.153 485.564 308.616 485.567 311.668L485.635 390.607C485.638 393.659 483.726 396.125 481.356 396.128L463.376 396.143C461.963 396.145 460.815 397.625 460.816 399.444L460.837 423.065C460.84 426.117 458.928 428.584 456.558 428.587L413.473 428.624C411.102 428.626 409.185 426.162 409.183 423.11L409.149 384.664C409.148 382.844 407.997 381.367 406.584 381.368L290.715 381.469C289.301 381.47 288.154 382.949 288.155 384.769L288.189 423.215C288.191 426.267 286.28 428.734 283.909 428.736L242.356 428.772C239.985 428.774 238.068 426.311 238.066 423.259L238.045 399.638C238.043 397.818 236.893 396.34 235.48 396.341L217.177 396.357C214.806 396.359 212.89 393.896 212.887 390.844L212.819 311.904C212.816 308.852 214.728 306.386 217.099 306.384L235.416 306.368C236.83 306.367 237.977 304.887 237.976 303.067L237.958 282.194C237.955 279.142 239.868 276.676 242.238 276.674L283.792 276.638Z" fill="#96C828"/>
+    </g>
+    <g class="logo-text">
+      <path d="M0 731.734H39.1406C43.9219 731.734 48.0781 732.25 51.6094 733.281C55.1719 734.281 58.125 735.672 60.4688 737.453C62.8125 739.234 64.5469 741.359 65.6719 743.828C66.8281 746.266 67.4062 748.906 67.4062 751.75C67.4062 756.406 65.9375 760.484 63 763.984C66.375 765.984 68.8906 768.578 70.5469 771.766C72.2031 774.953 73.0312 778.578 73.0312 782.641C73.0312 786.047 72.4531 789.125 71.2969 791.875C70.1719 794.625 68.4375 796.984 66.0938 798.953C63.7812 800.891 60.8438 802.391 57.2812 803.453C53.75 804.484 49.5781 805 44.7656 805H0V731.734ZM44.8594 759.859C46.1406 759.859 47.3906 759.906 48.6094 760C50.7031 758 51.75 755.719 51.75 753.156C51.75 750.5 50.7031 748.453 48.6094 747.016C46.5469 745.547 43.5156 744.812 39.5156 744.812H14.8594V759.859H44.8594ZM45.1406 792.062C49.1406 792.062 52.1719 791.203 54.2344 789.484C56.3281 787.766 57.375 785.344 57.375 782.219C57.375 779.094 56.3281 776.656 54.2344 774.906C52.1719 773.156 49.1406 772.281 45.1406 772.281H14.8594V792.062H45.1406Z" fill="#96C828"/>
+      <path d="M83.0625 777.344C83.0625 773.375 83.8594 769.656 85.4531 766.188C87.0781 762.719 89.375 759.688 92.3438 757.094C95.3438 754.5 98.9531 752.453 103.172 750.953C107.422 749.453 112.188 748.703 117.469 748.703C122.75 748.703 127.5 749.453 131.719 750.953C135.969 752.453 139.578 754.5 142.547 757.094C145.547 759.688 147.844 762.719 149.438 766.188C151.062 769.656 151.875 773.375 151.875 777.344C151.875 781.312 151.062 785.031 149.438 788.5C147.844 791.969 145.547 795 142.547 797.594C139.578 800.188 135.969 802.234 131.719 803.734C127.5 805.234 122.75 805.984 117.469 805.984C112.188 805.984 107.422 805.234 103.172 803.734C98.9531 802.234 95.3438 800.188 92.3438 797.594C89.375 795 87.0781 791.969 85.4531 788.5C83.8594 785.031 83.0625 781.312 83.0625 777.344ZM97.6406 777.344C97.6406 779.562 98.0781 781.672 98.9531 783.672C99.8594 785.641 101.156 787.391 102.844 788.922C104.562 790.422 106.641 791.625 109.078 792.531C111.547 793.406 114.344 793.844 117.469 793.844C120.594 793.844 123.375 793.406 125.812 792.531C128.281 791.625 130.359 790.422 132.047 788.922C133.766 787.391 135.062 785.641 135.938 783.672C136.844 781.672 137.297 779.562 137.297 777.344C137.297 775.125 136.844 773.016 135.938 771.016C135.062 769.016 133.766 767.266 132.047 765.766C130.359 764.234 128.281 763.031 125.812 762.156C123.375 761.25 120.594 760.797 117.469 760.797C114.344 760.797 111.547 761.25 109.078 762.156C106.641 763.031 104.562 764.234 102.844 765.766C101.156 767.266 99.8594 769.016 98.9531 771.016C98.0781 773.016 97.6406 775.125 97.6406 777.344Z" fill="#96C828"/>
+      <path d="M161.625 777.578C161.625 773.172 162.453 769.203 164.109 765.672C165.766 762.109 168.047 759.078 170.953 756.578C173.891 754.047 177.359 752.109 181.359 750.766C185.391 749.391 189.75 748.703 194.438 748.703C196.438 748.703 198.406 748.828 200.344 749.078C202.312 749.328 204.188 749.672 205.969 750.109C207.781 750.547 209.469 751.078 211.031 751.703C212.625 752.297 214.031 752.953 215.25 753.672V727.234H229.125V805H215.25V799.797C214.031 800.641 212.594 801.438 210.938 802.188C209.281 802.938 207.5 803.594 205.594 804.156C203.688 804.719 201.703 805.156 199.641 805.469C197.609 805.812 195.594 805.984 193.594 805.984C188.906 805.984 184.594 805.297 180.656 803.922C176.75 802.547 173.391 800.609 170.578 798.109C167.766 795.609 165.562 792.625 163.969 789.156C162.406 785.656 161.625 781.797 161.625 777.578ZM176.203 777.578C176.203 779.797 176.641 781.891 177.516 783.859C178.422 785.828 179.703 787.562 181.359 789.062C183.047 790.531 185.062 791.703 187.406 792.578C189.781 793.422 192.438 793.844 195.375 793.844C197.25 793.844 199.125 793.672 201 793.328C202.875 792.953 204.672 792.438 206.391 791.781C208.141 791.125 209.766 790.328 211.266 789.391C212.797 788.453 214.125 787.406 215.25 786.25V767.078C213.844 765.953 212.359 765 210.797 764.219C209.234 763.438 207.641 762.797 206.016 762.297C204.391 761.797 202.75 761.438 201.094 761.219C199.438 760.969 197.828 760.844 196.266 760.844C193.078 760.844 190.234 761.281 187.734 762.156C185.266 763 183.172 764.172 181.453 765.672C179.766 767.172 178.469 768.938 177.562 770.969C176.656 773 176.203 775.203 176.203 777.578Z" fill="#96C828"/>
+      <path d="M252.75 811.938C254.188 812.875 255.75 813.703 257.438 814.422C259.125 815.141 260.875 815.734 262.688 816.203C264.531 816.672 266.406 817.016 268.312 817.234C270.219 817.484 272.109 817.609 273.984 817.609C280.359 817.609 285.266 816.234 288.703 813.484C292.172 810.766 293.906 806.672 293.906 801.203V799.328C292.688 800.172 291.312 800.953 289.781 801.672C288.281 802.359 286.656 802.953 284.906 803.453C283.188 803.953 281.359 804.344 279.422 804.625C277.516 804.875 275.578 805 273.609 805C269.391 805 265.609 804.391 262.266 803.172C258.953 801.922 256.141 800.109 253.828 797.734C251.547 795.328 249.797 792.375 248.578 788.875C247.359 785.375 246.75 781.375 246.75 776.875V749.688H260.578V773.031C260.578 779.719 261.844 784.656 264.375 787.844C266.938 791 270.969 792.578 276.469 792.578C280.344 792.578 283.766 791.906 286.734 790.562C289.734 789.188 292.125 787.438 293.906 785.312V749.688H307.781V798.672C307.781 803.953 307.031 808.531 305.531 812.406C304.031 816.312 301.844 819.547 298.969 822.109C296.125 824.672 292.625 826.578 288.469 827.828C284.312 829.109 279.594 829.75 274.312 829.75C269.156 829.75 264.344 829.203 259.875 828.109C255.406 827.016 251.312 825.531 247.594 823.656L252.75 811.938Z" fill="#96C828"/>
+      <path d="M327.469 731.734H366.609C371.391 731.734 375.547 732.25 379.078 733.281C382.641 734.281 385.594 735.672 387.938 737.453C390.281 739.234 392.016 741.359 393.141 743.828C394.297 746.266 394.875 748.906 394.875 751.75C394.875 756.406 393.406 760.484 390.469 763.984C393.844 765.984 396.359 768.578 398.016 771.766C399.672 774.953 400.5 778.578 400.5 782.641C400.5 786.047 399.922 789.125 398.766 791.875C397.641 794.625 395.906 796.984 393.562 798.953C391.25 800.891 388.312 802.391 384.75 803.453C381.219 804.484 377.047 805 372.234 805H327.469V731.734ZM372.328 759.859C373.609 759.859 374.859 759.906 376.078 760C378.172 758 379.219 755.719 379.219 753.156C379.219 750.5 378.172 748.453 376.078 747.016C374.016 745.547 370.984 744.812 366.984 744.812H342.328V759.859H372.328ZM372.609 792.062C376.609 792.062 379.641 791.203 381.703 789.484C383.797 787.766 384.844 785.344 384.844 782.219C384.844 779.094 383.797 776.656 381.703 774.906C379.641 773.156 376.609 772.281 372.609 772.281H342.328V792.062H372.609Z" fill="white"/>
+      <path d="M413.859 749.641H427.688V776.641C427.688 779.203 427.969 781.547 428.531 783.672C429.094 785.766 430.047 787.562 431.391 789.062C432.766 790.562 434.578 791.734 436.828 792.578C439.109 793.391 441.938 793.797 445.312 793.797C446.906 793.797 448.516 793.625 450.141 793.281C451.797 792.938 453.375 792.469 454.875 791.875C456.375 791.25 457.766 790.516 459.047 789.672C460.359 788.828 461.484 787.906 462.422 786.906V749.641H476.297V805H462.422V800.266C459.016 802.297 455.594 803.75 452.156 804.625C448.719 805.5 445.453 805.938 442.359 805.938C437.297 805.938 432.953 805.328 429.328 804.109C425.734 802.891 422.781 801.125 420.469 798.812C418.188 796.469 416.516 793.609 415.453 790.234C414.391 786.828 413.859 782.953 413.859 778.609V749.641Z" fill="white"/>
+      <path d="M489.656 777.578C489.656 773.172 490.484 769.203 492.141 765.672C493.797 762.109 496.078 759.078 498.984 756.578C501.922 754.047 505.391 752.109 509.391 750.766C513.422 749.391 517.781 748.703 522.469 748.703C524.469 748.703 526.438 748.828 528.375 749.078C530.344 749.328 532.219 749.672 534 750.109C535.812 750.547 537.5 751.078 539.062 751.703C540.656 752.297 542.062 752.953 543.281 753.672V727.234H557.156V805H543.281V799.797C542.062 800.641 540.625 801.438 538.969 802.188C537.312 802.938 535.531 803.594 533.625 804.156C531.719 804.719 529.734 805.156 527.672 805.469C525.641 805.812 523.625 805.984 521.625 805.984C516.938 805.984 512.625 805.297 508.688 803.922C504.781 802.547 501.422 800.609 498.609 798.109C495.797 795.609 493.594 792.625 492 789.156C490.438 785.656 489.656 781.797 489.656 777.578ZM504.234 777.578C504.234 779.797 504.672 781.891 505.547 783.859C506.453 785.828 507.734 787.562 509.391 789.062C511.078 790.531 513.094 791.703 515.438 792.578C517.812 793.422 520.469 793.844 523.406 793.844C525.281 793.844 527.156 793.672 529.031 793.328C530.906 792.953 532.703 792.438 534.422 791.781C536.172 791.125 537.797 790.328 539.297 789.391C540.828 788.453 542.156 787.406 543.281 786.25V767.078C541.875 765.953 540.391 765 538.828 764.219C537.266 763.438 535.672 762.797 534.047 762.297C532.422 761.797 530.781 761.438 529.125 761.219C527.469 760.969 525.859 760.844 524.297 760.844C521.109 760.844 518.266 761.281 515.766 762.156C513.297 763 511.203 764.172 509.484 765.672C507.797 767.172 506.5 768.938 505.594 770.969C504.688 773 504.234 775.203 504.234 777.578Z" fill="white"/>
+      <path d="M569.906 777.578C569.906 773.172 570.734 769.203 572.391 765.672C574.047 762.109 576.328 759.078 579.234 756.578C582.172 754.047 585.641 752.109 589.641 750.766C593.672 749.391 598.031 748.703 602.719 748.703C604.719 748.703 606.688 748.828 608.625 749.078C610.594 749.328 612.469 749.672 614.25 750.109C616.062 750.547 617.75 751.078 619.312 751.703C620.906 752.297 622.312 752.953 623.531 753.672V727.234H637.406V805H623.531V799.797C622.312 800.641 620.875 801.438 619.219 802.188C617.562 802.938 615.781 803.594 613.875 804.156C611.969 804.719 609.984 805.156 607.922 805.469C605.891 805.812 603.875 805.984 601.875 805.984C597.188 805.984 592.875 805.297 588.938 803.922C585.031 802.547 581.672 800.609 578.859 798.109C576.047 795.609 573.844 792.625 572.25 789.156C570.688 785.656 569.906 781.797 569.906 777.578ZM584.484 777.578C584.484 779.797 584.922 781.891 585.797 783.859C586.703 785.828 587.984 787.562 589.641 789.062C591.328 790.531 593.344 791.703 595.688 792.578C598.062 793.422 600.719 793.844 603.656 793.844C605.531 793.844 607.406 793.672 609.281 793.328C611.156 792.953 612.953 792.438 614.672 791.781C616.422 791.125 618.047 790.328 619.547 789.391C621.078 788.453 622.406 787.406 623.531 786.25V767.078C622.125 765.953 620.641 765 619.078 764.219C617.516 763.438 615.922 762.797 614.297 762.297C612.672 761.797 611.031 761.438 609.375 761.219C607.719 760.969 606.109 760.844 604.547 760.844C601.359 760.844 598.516 761.281 596.016 762.156C593.547 763 591.453 764.172 589.734 765.672C588.047 767.172 586.75 768.938 585.844 770.969C584.938 773 584.484 775.203 584.484 777.578Z" fill="white"/>
+      <path d="M661.031 811.938C662.469 812.875 664.031 813.703 665.719 814.422C667.406 815.141 669.156 815.734 670.969 816.203C672.812 816.672 674.688 817.016 676.594 817.234C678.5 817.484 680.391 817.609 682.266 817.609C688.641 817.609 693.547 816.234 696.984 813.484C700.453 810.766 702.188 806.672 702.188 801.203V799.328C700.969 800.172 699.594 800.953 698.062 801.672C696.562 802.359 694.938 802.953 693.188 803.453C691.469 803.953 689.641 804.344 687.703 804.625C685.797 804.875 683.859 805 681.891 805C677.672 805 673.891 804.391 670.547 803.172C667.234 801.922 664.422 800.109 662.109 797.734C659.828 795.328 658.078 792.375 656.859 788.875C655.641 785.375 655.031 781.375 655.031 776.875V749.688H668.859V773.031C668.859 779.719 670.125 784.656 672.656 787.844C675.219 791 679.25 792.578 684.75 792.578C688.625 792.578 692.047 791.906 695.016 790.562C698.016 789.188 700.406 787.438 702.188 785.312V749.688H716.062V798.672C716.062 803.953 715.312 808.531 713.812 812.406C712.312 816.312 710.125 819.547 707.25 822.109C704.406 824.672 700.906 826.578 696.75 827.828C692.594 829.109 687.875 829.75 682.594 829.75C677.438 829.75 672.625 829.203 668.156 828.109C663.688 827.016 659.594 825.531 655.875 823.656L661.031 811.938Z" fill="white"/>
+    </g>
+  </svg>
+  <p class="splash-subtitle">Privacy Policy</p>
+</div>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <svg class="header-logo" width="50" height="50" viewBox="0 0 717 710" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="logo-left-b">
+      <path d="M624.163 356.05C624.163 356.05 657.694 325.231 663.672 309.531C672.416 286.599 670.886 205.878 670.886 205.878C670.867 184.64 659.54 165.021 641.141 154.437L387.313 8.19626C368.915 -2.38839 346.256 -2.36874 327.914 8.24777L74.3022 154.928C55.9224 165.582 44.6289 185.22 44.6473 206.421L44.9013 499.417C44.9197 520.656 56.2473 540.274 74.6456 550.859L328.474 697.137C346.872 707.721 369.531 707.702 387.873 697.085L641.447 550.367C659.827 539.751 671.121 520.113 671.102 498.874C671.102 498.874 668.825 420.514 663.975 399.991C657.736 373.626 624.126 356.05 624.126 356.05L624.163 356.05ZM578.538 519.107L380.735 628.169C362.767 638.56 340.67 638.842 322.46 628.856L127.054 521.821C107.607 511.162 95.7164 490.608 96.1841 468.47L100.822 245.703C101.254 224.951 112.51 205.913 130.478 195.522L335.015 77.1643C352.983 66.7728 375.079 66.4915 393.29 76.477L588.696 183.512C605.369 191.027 609.201 204.958 611.43 226.719C611.43 226.719 611.789 252.377 611.048 261.78C608.899 288.677 601.028 324.343 526.611 326.056C522.716 326.134 519.573 329.321 519.577 333.217L519.616 378.841C519.62 383.073 523.256 386.366 527.487 385.988C546.998 384.211 596.884 383.83 607.481 424.276C614.019 449.255 612.953 472.255 607.386 487.393C603.762 497.285 587.971 513.705 578.538 519.144L578.538 519.107Z" fill="#516070"/>
+    </g>
+    <g class="logo-upper-conn">
+      <path d="M283.792 276.638C286.162 276.636 288.078 279.099 288.081 282.151L288.112 317.829C288.113 319.649 289.264 321.127 290.677 321.126L406.577 321.026C407.99 321.024 409.137 319.544 409.135 317.724L409.104 282.046C409.102 278.994 411.014 276.528 413.385 276.525L456.47 276.488C458.84 276.486 460.757 278.949 460.76 282.001L460.778 302.874C460.779 304.694 461.929 306.172 463.342 306.171L481.278 306.155C483.648 306.153 485.564 308.616 485.567 311.668L485.635 390.607C485.638 393.659 483.726 396.125 481.356 396.128L463.376 396.143C461.963 396.145 460.815 397.625 460.816 399.444L460.837 423.065C460.84 426.117 458.928 428.584 456.558 428.587L413.473 428.624C411.102 428.626 409.185 426.162 409.183 423.11L409.149 384.664C409.148 382.844 407.997 381.367 406.584 381.368L290.715 381.469C289.301 381.47 288.154 382.949 288.155 384.769L288.189 423.215C288.191 426.267 286.28 428.734 283.909 428.736L242.356 428.772C239.985 428.774 238.068 426.311 238.066 423.259L238.045 399.638C238.043 397.818 236.893 396.34 235.48 396.341L217.177 396.357C214.806 396.359 212.89 393.896 212.887 390.844L212.819 311.904C212.816 308.852 214.728 306.386 217.099 306.384L235.416 306.368C236.83 306.367 237.977 304.887 237.976 303.067L237.958 282.194C237.955 279.142 239.868 276.676 242.238 276.674L283.792 276.638Z" fill="#96C828"/>
+    </g>
+  </svg>
+  <span class="header-label">Privacy Policy</span>
+</header>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main>
+  <div class="page-hero">
+    <h1><span>Body</span>Buddy</h1>
+    <p style="color:var(--muted); font-size:0.9rem;">Your fitness companion — privacy you can trust.</p>
+    <div class="date-badge">Effective: March 16, 2026</div>
+  </div>
+
+  <!-- 1. Introduction -->
+  <section class="card">
+    <h2>About This Policy</h2>
+    <p>
+      This privacy policy applies to the <strong style="color:var(--heading)">BodyBuddy</strong> app for mobile devices,
+      created by <strong style="color:var(--heading)">Israel Ben Zeev</strong> ("Service Provider") as a free service.
+      This service is intended for use <em>"AS IS"</em>.
+    </p>
+    <p>By using the Application, you consent to the processing of your information as described in this policy.</p>
+  </section>
+
+  <!-- 2. Information Collection -->
+  <section class="card">
+    <h2>Information Collection &amp; Use</h2>
+    <p>The Application collects information when you download and use it. This may include:</p>
+    <ul>
+      <li>Your device's Internet Protocol (IP) address</li>
+      <li>Pages visited within the Application, time and date of visit, and time spent</li>
+      <li>Total time spent on the Application</li>
+      <li>The operating system of your mobile device</li>
+    </ul>
+    <p>The Application <strong style="color:var(--heading)">does not</strong> gather precise location data from your device.</p>
+    <p>
+      The Application uses <strong style="color:var(--green)">Artificial Intelligence (AI)</strong> technologies to enhance
+      user experience and provide personalized features. AI components may process user data to deliver personalized content,
+      recommendations, or automated functionalities — all in accordance with this policy and applicable law.
+    </p>
+    <p>
+      The Service Provider may contact you from time to time with important information, required notices, and marketing promotions
+      based on the information you provide.
+    </p>
+  </section>
+
+  <!-- 3. Push Notifications -->
+  <section class="card">
+    <h2>Push Notifications</h2>
+    <p>
+      The Application sends <strong style="color:var(--heading)">personalized push notifications</strong> to enhance your experience.
+      To make this possible, when you sign in, the Application collects and securely stores your device's
+      <strong style="color:var(--green)">push notification token</strong> and a <strong style="color:var(--green)">unique device identifier</strong>.
+    </p>
+    <p>
+      This information is used exclusively to deliver relevant notifications and reminders to your device and is not shared with
+      third parties for advertising purposes.
+    </p>
+    <p>
+      You can disable push notifications at any time through your device's system settings. Disabling notifications will not affect
+      your ability to use the other features of the Application.
+    </p>
+  </section>
+
+  <!-- 4. Third Party -->
+  <section class="card">
+    <h2>Third Party Access</h2>
+    <p>
+      Only aggregated, anonymized data is periodically transmitted to external services to help improve the Application.
+      The Application uses third-party services that maintain their own privacy policies:
+    </p>
+    <ul>
+      <li><a href="https://www.google.com/policies/privacy/" target="_blank" rel="noopener">Google Play Services</a></li>
+    </ul>
+    <p>The Service Provider may disclose collected information:</p>
+    <ul>
+      <li>As required by law (e.g., to comply with a subpoena or legal process)</li>
+      <li>When necessary in good faith to protect rights, safety, or to investigate fraud</li>
+      <li>With trusted service providers who have agreed to adhere to the terms of this policy</li>
+    </ul>
+  </section>
+
+  <!-- 5. Opt-Out -->
+  <section class="card">
+    <h2>Opt-Out Rights</h2>
+    <p>
+      You can stop all collection of information by the Application by uninstalling it.
+      Use the standard uninstall process available on your mobile device or via your app marketplace.
+    </p>
+  </section>
+
+  <!-- 6. Data Retention -->
+  <section class="card">
+    <h2>Data Retention Policy</h2>
+    <p>
+      The Service Provider will retain User Provided data for as long as you use the Application and for a reasonable time thereafter.
+      To request deletion of your data, please contact our support team:
+    </p>
+    <a class="contact-btn" href="mailto:bodybuddysupport@gmail.com?subject=Account%20Deletion%20Request">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+      bodybuddysupport@gmail.com
+    </a>
+  </section>
+
+  <!-- 7. Children -->
+  <section class="card">
+    <h2>Children's Privacy</h2>
+    <p>
+      The Service Provider does not knowingly solicit data from or market to children under the age of 13.
+      The Application does not address anyone under 13.
+    </p>
+    <p>
+      If the Service Provider discovers that a child under 13 has provided personal information, it will be immediately
+      deleted from their servers. If you are a parent or guardian and believe your child has provided us with personal information,
+      please contact us so we can take the necessary actions.
+    </p>
+    <span class="info-chip">Age restriction: 13+</span>
+  </section>
+
+  <!-- 8. Security -->
+  <section class="card">
+    <h2>Security</h2>
+    <p>
+      The Service Provider is committed to safeguarding the confidentiality of your information.
+      Physical, electronic, and procedural safeguards are in place to protect the information we process and maintain.
+    </p>
+  </section>
+
+  <!-- 9. Changes -->
+  <section class="card">
+    <h2>Changes to This Policy</h2>
+    <p>
+      This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes
+      by updating this page with the new Privacy Policy.
+    </p>
+    <p>
+      You are advised to consult this Privacy Policy regularly. Continued use of the Application is deemed approval of all changes.
+    </p>
+  </section>
+
+  <!-- 10. Consent -->
+  <section class="card">
+    <h2>Your Consent</h2>
+    <p>
+      By using the Application, you are consenting to the processing of your information as set forth in this
+      Privacy Policy, now and as amended by us.
+    </p>
+  </section>
+
+  <!-- 11. Account Deletion -->
+  <section class="card">
+    <h2>Account Deletion</h2>
+    <p>
+      You have the right to request the permanent deletion of your account and all associated personal data
+      from our servers at any time.
+    </p>
+    <p>To submit a deletion request, send an email to our support team with the following details:</p>
+    <ul>
+      <li><strong style="color:var(--heading)">To:</strong> <a href="mailto:bodybuddysupport@gmail.com">bodybuddysupport@gmail.com</a></li>
+      <li><strong style="color:var(--heading)">Subject:</strong> <span style="color:var(--green)">Account Deletion Request</span></li>
+      <li><strong style="color:var(--heading)">Body:</strong> Include your <em>username</em> or the <em>email address</em> associated with your account</li>
+    </ul>
+    <p>
+      Upon receiving your request, the Service Provider will process the deletion within a reasonable timeframe
+      and confirm via email once your account and data have been permanently removed.
+      Please note that some data may be retained if required by law or for legitimate business purposes.
+    </p>
+    <a class="contact-btn" href="mailto:bodybuddysupport@gmail.com?subject=Account%20Deletion%20Request">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+      Request Account Deletion
+    </a>
+  </section>
+
+  <!-- 12. Contact -->
+  <section class="card">
+    <h2>Contact Us</h2>
+    <p>
+      If you have any questions regarding privacy while using the Application, or have questions about our practices,
+      please contact the Service Provider:
+    </p>
+    <a class="contact-btn" href="mailto:bodybuddysupport@gmail.com">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+      </svg>
+      bodybuddysupport@gmail.com
+    </a>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 BodyBuddy · Israel Ben Zeev · All rights reserved</p>
+  <p style="margin-top:6px; font-size:0.72rem; color:#374151;">
+    Generated with <a href="https://app-privacy-policy-generator.nisrulz.com/" target="_blank" rel="noopener" style="color:#516070;">App Privacy Policy Generator</a>
+  </p>
+</footer>
+
+<script>
+  // Hide splash after logo animation completes (~1.1s total)
+  setTimeout(() => {
+    document.getElementById('splash').classList.add('hidden');
+  }, 1400);
+</script>
+
+</body>
+</html>
