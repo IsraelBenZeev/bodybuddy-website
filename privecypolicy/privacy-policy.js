@@ -4,6 +4,7 @@ const SUPABASE_URL = 'https://arxscyvqikyjupszspym.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_gwAXrNwZUuYRGm6_t-_0Tw_EMwi45IF';
 
 const EMAIL_RE = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
+const SECTION_REF_RE = /(?:Section|סעיף)\s+(\d+)/g;
 
 const STRINGS = {
   he: {
@@ -17,6 +18,7 @@ const STRINGS = {
     footer: '© 2026 BodyBuddy · ישראל בן זאב · כל הזכויות שמורות',
     versionLabel: (v, d) => (d ? `גרסה ${v} · עודכן ב-${d}` : `גרסה ${v}`),
     dateLocale: 'he-IL',
+    whatsNewTitle: 'מה השתנה בגרסה זו',
   },
   en: {
     docTitle: 'BodyBuddy – Privacy Policy',
@@ -29,6 +31,7 @@ const STRINGS = {
     footer: '© 2026 BodyBuddy · Israel Ben Zeev · All rights reserved',
     versionLabel: (v, d) => (d ? `Version ${v} · Updated ${d}` : `Version ${v}`),
     dateLocale: 'en-US',
+    whatsNewTitle: "What's new in this version",
   },
 };
 
@@ -97,18 +100,63 @@ function appendLinkifiedText(parent, text) {
   }
 }
 
+// Turns "Section 8" / "סעיף 8" references into anchor links that jump to that section's card.
+function appendSectionLinkedText(parent, text) {
+  let lastIndex = 0;
+  let match;
+  SECTION_REF_RE.lastIndex = 0;
+  while ((match = SECTION_REF_RE.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parent.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+    }
+    const anchor = document.createElement('a');
+    anchor.href = `#section-${match[1]}`;
+    anchor.textContent = match[0];
+    parent.appendChild(anchor);
+    lastIndex = SECTION_REF_RE.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parent.appendChild(document.createTextNode(text.slice(lastIndex)));
+  }
+}
+
+function renderChangesSummary(lang) {
+  const root = el('changes-root');
+  const list = el('changes-list');
+  list.innerHTML = '';
+
+  const changes = policyData && (lang === 'he' ? policyData.changes_summary_he : policyData.changes_summary_en);
+  if (!changes || !changes.length) {
+    root.hidden = true;
+    return;
+  }
+
+  el('changes-title').textContent = STRINGS[lang].whatsNewTitle;
+  changes.forEach((change) => {
+    const li = document.createElement('li');
+    appendSectionLinkedText(li, change);
+    list.appendChild(li);
+  });
+  root.hidden = false;
+}
+
 function renderSections(lang) {
   const root = el('sections-root');
   root.innerHTML = '';
   if (!policyData) return;
 
   const sections = lang === 'he' ? policyData.content_he : policyData.content_en;
-  (sections || []).forEach((section) => {
+  (sections || []).forEach((section, index) => {
     const card = document.createElement('section');
     card.className = 'card';
+    card.id = `section-${index + 1}`;
 
     const h2 = document.createElement('h2');
-    h2.textContent = section.title;
+    const number = document.createElement('span');
+    number.className = 'section-number';
+    number.textContent = String(index + 1);
+    h2.appendChild(number);
+    h2.appendChild(document.createTextNode(section.title));
     card.appendChild(h2);
 
     (section.body || []).forEach((paragraph) => {
@@ -134,6 +182,7 @@ function renderSections(lang) {
 function renderAll(lang) {
   applyChrome(lang);
   renderDateBadge(lang);
+  renderChangesSummary(lang);
   renderSections(lang);
 }
 
@@ -143,7 +192,7 @@ function setLanguage(lang) {
 }
 
 async function fetchPrivacyPolicy() {
-  const url = `${SUPABASE_URL}/rest/v1/privacy_policies?select=version,content_he,content_en,created_at&order=created_at.desc&limit=1`;
+  const url = `${SUPABASE_URL}/rest/v1/legal_documents?select=version,content_he,content_en,created_at,changes_summary_he,changes_summary_en&document_type=eq.privacy_policy&order=created_at.desc&limit=1`;
   const res = await fetch(url, {
     headers: {
       apikey: SUPABASE_ANON_KEY,
