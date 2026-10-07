@@ -1,7 +1,7 @@
 // BodyBuddy legal documents page (Privacy Policy / Terms of Service).
 // Loads both documents from Supabase, renders HE/EN, and lets the user switch
 // between them with a tab control. The tab that opens by default is determined
-// by the page's own path — /privecypolicy/ defaults to the privacy policy,
+// by the page's own path — /privacypolicy/ defaults to the privacy policy,
 // /termsofservice/ defaults to the terms of service — so linking to either route
 // (e.g. from the homepage footer) lands the visitor on the right document.
 
@@ -13,7 +13,7 @@ const SECTION_REF_RE = /(?:Section|סעיף)\s+(\d+)/g;
 
 const DOC_TYPES = ['privacy_policy', 'terms_of_service'];
 const DOC_ROUTES = {
-  privacy_policy: '/privecypolicy/',
+  privacy_policy: '/privacypolicy/',
   terms_of_service: '/termsofservice/',
 };
 
