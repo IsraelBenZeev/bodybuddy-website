@@ -4,110 +4,236 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BodyBuddy — תזונה, אימונים והתקדמות במקום אחד</title>
-<meta name="description" content="BodyBuddy היא אפליקציית כושר ותזונה: יומן תזונה חכם, מעקב קלוריות ומאקרו, תוכניות אימונים אישיות ומעקב התקדמות ומשקל.">
-<link rel="icon" type="image/png" href="logo.png">
+<meta name="description" content="BodyBuddy היא אפליקציית כושר ותזונה: יומן תזונה חכם, ניתוח ארוחות ב-AI, תוכניות אימונים אישיות ומעקב התקדמות.">
+<meta name="theme-color" content="#1a2030">
+<link rel="icon" type="image/svg+xml" href="images/logo-mark.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Suez+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Karantina:wght@300;400;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="bg-fx" aria-hidden="true"></div>
+<div class="lap" aria-hidden="true"><i id="lapBar"></i></div>
 
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
-    <div class="brand">
-      <img src="logo.png" alt="לוגו BodyBuddy" class="brand-logo">
+    <a href="#top" class="brand" aria-label="BodyBuddy — לראש העמוד">
+      <img src="images/logo-mark.svg" alt="" class="brand-logo" width="34" height="34">
       <span class="brand-name">BodyBuddy</span>
-    </div>
+    </a>
     <a href="#download" class="btn btn-ghost btn-small">הורידו את האפליקציה</a>
   </div>
 </header>
 
-<main>
+<main id="top">
 
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-logo-wrap">
-        <img src="logo.png" alt="לוגו BodyBuddy — משקולת בליים על רקע משושה כהה" class="hero-logo">
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="wall" aria-hidden="true">
+      <div class="wall-cols">
+        <div class="col col-a"><div class="col-track">
+          <img src="images/screens/w360/body-map.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/diary.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/exercise-history.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/ai-scan.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/profile-workouts.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/food-search.jpg" alt="" width="360" height="772">
+        </div></div>
+        <div class="col col-b"><div class="col-track">
+          <img src="images/screens/w360/workout-session.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/meal-review.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/exercises-list.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/nutrition-calories.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/workouts-list.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/food-detail.jpg" alt="" width="360" height="772">
+        </div></div>
+        <div class="col col-c"><div class="col-track">
+          <img src="images/screens/w360/exercise-detail.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/ai-analyzing.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/profile-nutrition.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/my-meals.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/nutrition-protein.jpg" alt="" width="360" height="772">
+          <img src="images/screens/w360/my-foods.jpg" alt="" width="360" height="772">
+        </div></div>
       </div>
-      <h1 class="hero-title">Body<span class="accent-text">Buddy</span></h1>
+      <div class="wall-scrim"></div>
+    </div>
+
+    <div class="hero-inner">
+      <h1 class="hero-logo-wrap" id="heroLogo">
+        <img src="images/logo.svg" alt="BodyBuddy" class="hero-logo" width="717" height="830">
+      </h1>
       <p class="hero-tagline">האפליקציה שעוקבת אחריכם בכל צעד — תזונה, אימונים והתקדמות אישית, במקום אחד.</p>
       <div class="hero-cta">
-        <a href="#download" class="btn btn-primary">להורדה חינם</a>
-        <a href="#features" class="btn btn-link">גלו איך זה עובד ↓</a>
+        <a href="#download" class="btn btn-primary magnetic"><span>להורדה חינם</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="M6 11l6 6 6-6"/><path d="M5 20h14"/></svg>
+        </a>
+        <a href="#nutrition" class="btn btn-link">גלו איך זה עובד
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- ============ ABOUT ============ -->
   <section class="about">
     <div class="section-inner">
-      <p class="about-text">
+      <p class="about-text" id="aboutText">
         <strong class="accent-text">BodyBuddy</strong> הוא יומן תזונה חכם שעוזר לכם לתעד ארוחות בקלות ולעקוב אחר קלוריות וערכי מאקרו — חלבון, פחמימות ושומן — בלחיצה אחת ביום.
         לצד זאת, האפליקציה מציעה תוכניות אימונים אישיות המותאמות למטרות שלכם, ומאפשרת מעקב מדויק אחר משקל והתקדמות לאורך זמן, כך שתמיד תדעו בדיוק איפה אתם עומדים בדרך למטרה.
       </p>
     </div>
   </section>
 
-  <section class="features" id="features">
+  <!-- ============ CHAPTER: NUTRITION ============ -->
+  <section class="chapter" id="nutrition">
     <div class="section-inner">
-      <h2 class="section-title">כל מה שצריך כדי להתקדם</h2>
-      <div class="features-grid">
+      <header class="chapter-head">
+        <h2 class="chapter-title">תזונה</h2>
+        <p class="chapter-sub">יומן תזונה ומעקב קלוריות — חלבון, פחמימות ושומן, בכל יום.</p>
+      </header>
 
-        <article class="feature-card reveal">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 3v7a3 3 0 0 0 6 0V3"/>
-              <path d="M9 10v11"/>
-              <path d="M17 3c-1.5 1.5-2 3.5-2 6s1 4 2 5v7"/>
-            </svg>
-          </div>
-          <h3>יומן תזונה ומעקב קלוריות</h3>
-          <p>תיעוד ארוחות מהיר ומעקב אחר קלוריות וערכים תזונתיים — חלבון, פחמימות ושומן — בכל יום.</p>
-        </article>
-
-        <article class="feature-card reveal">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 12h2"/><path d="M18 12h2"/>
-              <path d="M6.5 9v6"/><path d="M17.5 9v6"/>
-              <rect x="8" y="8.5" width="8" height="7" rx="1.2"/>
-            </svg>
-          </div>
-          <h3>תוכניות אימונים אישיות</h3>
-          <p>תוכניות אימון המותאמות אישית למטרות ולרמת הכושר שלכם, עם מעקב התקדמות לכל תרגיל.</p>
-        </article>
-
-        <article class="feature-card reveal">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M4 19h16"/>
-              <path d="M6 16l4-5 3 3 5-7"/>
-              <path d="M14 7h4v4"/>
-            </svg>
-          </div>
-          <h3>מעקב התקדמות ומשקל</h3>
-          <p>גרפים והיסטוריית משקל שמראים בדיוק כמה התקדמתם בדרך למטרה שהצבתם.</p>
-        </article>
-
-        <article class="feature-card reveal">
-          <div class="feature-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3a5 5 0 0 0-5 5v3.5c0 .8-.3 1.6-.9 2.2L5 15h14l-1.1-1.3a3 3 0 0 1-.9-2.2V8a5 5 0 0 0-5-5z"/>
-              <path d="M10 18a2 2 0 0 0 4 0"/>
-            </svg>
-          </div>
-          <h3>התראות ותזכורות חכמות</h3>
-          <p>תזכורות לארוחות, שתייה ואימונים שעוזרות לשמור על עקביות לאורך זמן.</p>
-        </article>
-
+      <div class="chapter-body">
+        <ol class="steps">
+          <li class="step is-active">
+            <div class="step-copy">
+              <h3>היומן של היום, מסודר</h3>
+              <p>כל הארוחות והמאכלים שהוספתם, לפי שעות, עם קלוריות וערכים תזונתיים לכל פריט.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/diary.jpg" alt="מסך יומן התזונה: ארוחת בוקר ופירוט המאכלים שבה עם ערכיהם התזונתיים" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>חיפוש מאכלים מהיר</h3>
+              <p>מקלידים שם של מאכל והנתונים כבר שם. מאכלים שהשתמשתם בהם לאחרונה והצעות מהירות מחכים בהישג יד.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/food-search.jpg" alt="מסך חיפוש מאכל עם מאכלים אחרונים והצעות מהירות" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>מצלמים, וה־AI מנתח</h3>
+              <p>מצלמים את הארוחה, והאפליקציה מזהה את המרכיבים, הקלוריות והערכים התזונתיים תוך שניות. הניתוח נעשה על ידי AI ועלול להכיל אי־דיוקים, ותמיד אפשר לתקן.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/ai-scan.jpg" alt="מסך ניתוח תזונה חכם: צילום או בחירה מהגלריה" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>סקירת ארוחה לפי מרכיבים</h3>
+              <p>רואים כמה קלוריות, חלבון, פחמימות ושומן יש בכל מרכיב, משנים כמויות בגרמים, ובודקים מה נשאר לכם להיום.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/meal-review.jpg" alt="סקירת ארוחת בוקר: מרכיבי הארוחה והמאקרו" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>מול היעד היומי</h3>
+              <p>גרף קלוריות וחלבון מול היעד שהגדרתם, כדי לדעת בכל רגע כמה נצרך וכמה נותר.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/nutrition-calories.jpg" alt="מסך תזונה: יעד קלוריות יומי וכמה נצרך" width="640" height="1372" loading="lazy">
+          </li>
+        </ol>
+        <div class="phone-col" aria-hidden="true"><div class="phone"><div class="phone-screen"></div></div></div>
       </div>
     </div>
   </section>
 
+  <!-- ============ CHAPTER: TRAINING ============ -->
+  <section class="chapter" id="training">
+    <div class="section-inner">
+      <header class="chapter-head">
+        <h2 class="chapter-title">אימונים</h2>
+        <p class="chapter-sub">תוכניות אימון המותאמות אישית למטרות ולרמת הכושר שלכם.</p>
+      </header>
+
+      <div class="chapter-body">
+        <ol class="steps">
+          <li class="step is-active">
+            <div class="step-copy">
+              <h3>בוחרים אזור על הגוף</h3>
+              <p>מסמנים על המודל את השרירים שרוצים לאמן, מסובבים את המודל, ועוברים ישר לתרגילים המתאימים.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/body-map.jpg" alt="בחירת אזור אימון על מודל גוף" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>ספריית תרגילים</h3>
+              <p>מסננים לפי אזור, מקום אימון וציוד, מחפשים תרגיל בשמו, ומסמנים מועדפים.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/exercises-list.jpg" alt="רשימת תרגילי כתפיים עם סינון וחיפוש" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>הסבר מלא לכל תרגיל</h3>
+              <p>הדגמה, שריר עיקרי, שרירים מסייעים וציוד, הכול במקום אחד לפני שמתחילים.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/exercise-detail.jpg" alt="עמוד תרגיל: לחיצת כתפיים במכונה" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>אימון בזמן אמת</h3>
+              <p>טיימר, סטים, משקלים וזמנים. מתעדים תוך כדי האימון ומסיימים בלחיצה.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/workout-session.jpg" alt="מסך אימון פעיל: פלאנק עם טיימר וסטים" width="640" height="1372" loading="lazy">
+          </li>
+        </ol>
+        <div class="phone-col" aria-hidden="true"><div class="phone"><div class="phone-screen"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: PROGRESS ============ -->
+  <section class="chapter" id="progress">
+    <div class="section-inner">
+      <header class="chapter-head">
+        <h2 class="chapter-title">התקדמות</h2>
+        <p class="chapter-sub">גרפים והיסטוריה שמראים בדיוק כמה התקדמתם בדרך למטרה שהצבתם.</p>
+      </header>
+
+      <div class="chapter-body">
+        <ol class="steps">
+          <li class="step is-active">
+            <div class="step-copy">
+              <h3>שיאים אישיים וגרף לאורך זמן</h3>
+              <p>לכל תרגיל: חזרות, משקל וסטים מקסימליים, וגרף שמראה איך השתפרתם מאימון לאימון.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/exercise-history.jpg" alt="היסטוריית תרגיל: שיאים אישיים וגרף חזרות" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>סיכום אימונים שבועי</h3>
+              <p>כמה אימונים עשיתם השבוע, זמן פעילות, שבועות ברצף, והאם אתם עומדים ביעד.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/profile-workouts.jpg" alt="פרופיל: סיכום אימונים שבועי" width="640" height="1372" loading="lazy">
+          </li>
+          <li class="step">
+            <div class="step-copy">
+              <h3>סיכום תזונה שבועי</h3>
+              <p>באיזה ימים עמדתם ביעד הקלוריות והחלבון, ואיפה אתם היום.</p>
+            </div>
+            <img class="step-shot" src="images/screens/w640/profile-nutrition.jpg" alt="פרופיל: סיכום תזונה שבועי" width="640" height="1372" loading="lazy">
+          </li>
+        </ol>
+        <div class="phone-col" aria-hidden="true"><div class="phone"><div class="phone-screen"></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REMINDERS ============ -->
+  <section class="more">
+    <div class="section-inner more-inner">
+      <svg class="more-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3a5 5 0 0 0-5 5v3.5c0 .8-.3 1.6-.9 2.2L5 15h14l-1.1-1.3a3 3 0 0 1-.9-2.2V8a5 5 0 0 0-5-5z"/><path d="M10 18a2 2 0 0 0 4 0"/>
+      </svg>
+      <h3>התראות ותזכורות חכמות</h3>
+      <p>תזכורות לארוחות, שתייה ואימונים שעוזרות לשמור על עקביות לאורך זמן.</p>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOAD ============ -->
   <section class="download" id="download">
     <div class="section-inner reveal">
+      <img src="images/logo-mark.svg" alt="" class="download-mark" width="96" height="94">
       <h2 class="section-title">קחו את BodyBuddy איתכם</h2>
       <p class="download-sub">זמינה עכשיו להורדה חינמית. תתחילו לעקוב אחרי התזונה והאימונים שלכם עוד היום.</p>
       <div class="store-buttons">
@@ -128,7 +254,7 @@
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <img src="logo.png" alt="לוגו BodyBuddy" class="footer-logo">
+      <img src="images/logo-mark.svg" alt="" class="footer-logo" width="26" height="26">
       <span>BodyBuddy</span>
     </div>
     <nav class="footer-links" aria-label="קישורי פוטר">
