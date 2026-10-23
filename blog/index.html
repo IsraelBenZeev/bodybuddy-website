@@ -1,44 +1,81 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BodyBuddy – בלוג</title>
-  <meta name="description" content="מדריכים קצרים על תזונה, קלוריות וכושר מהצוות של BodyBuddy." />
-  <link rel="canonical" href="https://bodybuddy.fitness/blog/" />
-  <link rel="icon" type="image/png" href="../logo.png" />
-  <link rel="stylesheet" href="blog.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BodyBuddy – בלוג</title>
+<meta name="description" content="מדריכים קצרים על תזונה, קלוריות וכושר מהצוות של BodyBuddy.">
+<meta name="theme-color" content="#1a2030">
+<link rel="canonical" href="https://bodybuddy.fitness/blog/">
+<link rel="icon" type="image/svg+xml" href="../images/logo-mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Karantina:wght@300;400;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="blog.css">
 </head>
 <body>
 
-<header>
-  <a class="brand" href="../index.html"><img src="../logo.png" alt="לוגו BodyBuddy" /><span><b>Body</b>Buddy</span></a>
-  <nav class="nav-links" aria-label="ניווט">
-    <a href="../index.html">דף הבית</a>
-    <a href="index.html" class="active">בלוג</a>
-  </nav>
+<div class="lap" aria-hidden="true"><i id="lapBar"></i></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="../index.html" class="brand" aria-label="BodyBuddy — לדף הבית">
+      <img src="../images/logo-mark.svg" alt="" class="brand-logo" width="34" height="34">
+      <span class="brand-name">BodyBuddy</span>
+    </a>
+    <div class="header-actions">
+      <a href="../index.html" class="nav-link nav-home">דף הבית</a>
+      <a href="index.html" class="nav-link is-current" aria-current="page">בלוג</a>
+      <a href="../index.html#download" class="btn btn-ghost btn-small">הורידו את האפליקציה</a>
+    </div>
+  </div>
 </header>
 
 <main>
-  <div class="page-hero">
-    <h1><span>Body</span>Buddy בלוג</h1>
-    <p class="sub">מדריכים קצרים וברורים על תזונה, קלוריות וכושר.</p>
-  </div>
+  <div class="section-inner">
+    <header class="blog-hero">
+      <h1 class="blog-title">בלוג</h1>
+      <p class="blog-sub">מדריכים קצרים וברורים על תזונה, קלוריות וכושר.</p>
+    </header>
 
-  <a class="card post-card" href="tdee/index.html">
-    <h2>מהו TDEE ואיך מחשבים אותו?</h2>
-    <p>כמה קלוריות הגוף שורף ביום, איך מחשבים בעזרת נוסחת מיפלין-סנט ג'אור, ומה עושים עם המספר הזה כדי לרדת, לעלות או לשמור על המשקל.</p>
-    <span class="more">לקריאה ←</span>
-  </a>
+    <div class="posts">
+      <a class="post-feature" href="tdee/index.html">
+        <div class="post-feature-text">
+          <h2>מהו TDEE ואיך מחשבים אותו?</h2>
+          <p>כמה קלוריות הגוף שורף ביום, איך מחשבים בעזרת נוסחת מיפלין-סנט ג'אור, ומה עושים עם המספר הזה כדי לרדת, לעלות או לשמור על המשקל.</p>
+          <div class="read-meta">
+            <span class="chip">כ-4 דקות קריאה</span>
+            <span class="read-more">לקריאה
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="M11 6l-6 6 6 6"/></svg>
+            </span>
+          </div>
+        </div>
+        <div class="post-feature-shot" aria-hidden="true">
+          <img src="../images/screens/w640/nutrition-calories.jpg" alt="" width="640" height="1372" loading="lazy">
+        </div>
+      </a>
+    </div>
+  </div>
 </main>
 
-<footer>
-  <p>
-    <a href="../privacypolicy/index.html">מדיניות פרטיות</a>·
-    <a href="../termsofservice/index.html">תנאי שימוש</a>
-  </p>
-  <p style="margin-top:8px">© 2026 BodyBuddy — כל הזכויות שמורות</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="../images/logo-mark.svg" alt="" class="footer-logo" width="26" height="26">
+      <span>BodyBuddy</span>
+    </div>
+    <nav class="footer-links" aria-label="קישורי פוטר">
+      <a href="/privacypolicy/">מדיניות פרטיות</a>
+      <a href="/termsofservice/">תנאי שימוש</a>
+      <a href="index.html">בלוג</a>
+      <a href="mailto:support@bodybuddy-app.com">תמיכה: support@bodybuddy-app.com</a>
+    </nav>
+    <p class="copyright">© <span id="year">2026</span> BodyBuddy — כל הזכויות שמורות</p>
+  </div>
 </footer>
 
+<script src="blog.js"></script>
 </body>
 </html>
