@@ -1,6 +1,12 @@
 // BodyBuddy — sticky phone chapters, drifting screen wall, scroll-linked details.
 
+// A refresh always opens at the top of the page.
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+window.scrollTo(0, 0);
+
 document.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = window.matchMedia('(pointer: fine)').matches;
   const desktop = window.matchMedia('(min-width: 901px)');
@@ -74,17 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => { if (c.current === idx) prev.classList.remove('was-active'); }, 950);
   };
 
-  if ('IntersectionObserver' in window) {
-    chapters.forEach((c) => {
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) show(c, c.steps.indexOf(e.target));
-        });
-      }, { rootMargin: '-45% 0px -45% 0px' });
-      c.steps.forEach((s) => io.observe(s));
-    });
-  }
-
   /* ---------- Reveal ---------- */
   const reveals = [...$$('.reveal'), ...$$('.chapter-head')];
   if ('IntersectionObserver' in window) {
@@ -114,10 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const r = c.stepsEl.getBoundingClientRect();
       const f = clamp((window.innerHeight * 0.5 - r.top) / r.height);
       c.stepsEl.style.setProperty('--fill', f.toFixed(3));
-      if (!reduced && desktop.matches) {
-        // the phone slowly turns as you move through the chapter
-        c.phone.style.setProperty('--ry', `${(-10 + f * 20).toFixed(1)}deg`);
-      }
+      // which step is being read: the one under the probe line (middle of the screen on desktop, just under the pinned phone on mobile)
+      const col = c.phone.parentElement.getBoundingClientRect();
+      const probe = desktop.matches ? window.innerHeight * 0.5 : col.bottom + 90;
+      let idx = -1;
+      c.steps.forEach((st, i) => { const sr = st.getBoundingClientRect(); if (sr.top <= probe && sr.bottom > probe) idx = i; });
+      if (idx >= 0) show(c, idx);
+      // the phone slowly turns as you move through the chapter
+      if (!reduced) c.phone.style.setProperty('--ry', `${((desktop.matches ? -10 : -6) + f * (desktop.matches ? 20 : 12)).toFixed(1)}deg`);
     });
 
     if (words.length) {
