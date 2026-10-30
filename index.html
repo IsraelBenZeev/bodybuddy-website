@@ -18,14 +18,29 @@
 </head>
 <body>
 
-<div class="lap" aria-hidden="true"><i id="lapBar"></i></div>
-
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <a href="#top" class="brand" aria-label="BodyBuddy — לראש העמוד">
       <img src="images/logo-mark.svg" alt="" class="brand-logo" width="34" height="34">
       <span class="brand-name">BodyBuddy</span>
     </a>
+    <!-- page progress as a barbell: one plate pair per chapter, the last at the download -->
+    <svg class="barbell" id="barbell" viewBox="0 0 180 28" aria-hidden="true">
+      <rect class="bb-shaft" x="6" y="12.5" width="168" height="3" rx="1.5"/>
+      <rect class="bb-fill" id="barbellFill" x="6" y="12.5" width="168" height="3" rx="1.5"/>
+      <rect class="bb-collar" x="44" y="9" width="3" height="10" rx="1"/>
+      <rect class="bb-collar" x="133" y="9" width="3" height="10" rx="1"/>
+      <g class="bb-slot"><rect x="37" y="1" width="5" height="26" rx="1.5"/><rect x="138" y="1" width="5" height="26" rx="1.5"/></g>
+      <g class="bb-slot"><rect x="30" y="3" width="5" height="22" rx="1.5"/><rect x="145" y="3" width="5" height="22" rx="1.5"/></g>
+      <g class="bb-slot"><rect x="23" y="5" width="5" height="18" rx="1.5"/><rect x="152" y="5" width="5" height="18" rx="1.5"/></g>
+      <g class="bb-slot"><rect x="16" y="7" width="5" height="14" rx="1.5"/><rect x="159" y="7" width="5" height="14" rx="1.5"/></g>
+      <g class="bb-plates">
+        <g class="bb-plate"><rect class="l" x="37" y="1" width="5" height="26" rx="1.5"/><rect class="r" x="138" y="1" width="5" height="26" rx="1.5"/></g>
+        <g class="bb-plate"><rect class="l" x="30" y="3" width="5" height="22" rx="1.5"/><rect class="r" x="145" y="3" width="5" height="22" rx="1.5"/></g>
+        <g class="bb-plate"><rect class="l" x="23" y="5" width="5" height="18" rx="1.5"/><rect class="r" x="152" y="5" width="5" height="18" rx="1.5"/></g>
+        <g class="bb-plate"><rect class="l" x="16" y="7" width="5" height="14" rx="1.5"/><rect class="r" x="159" y="7" width="5" height="14" rx="1.5"/></g>
+      </g>
+    </svg>
     <div class="header-actions">
       <a href="blog/index.html" class="nav-link">בלוג</a>
       <a href="#download" class="btn btn-ghost btn-small">הורידו את האפליקציה</a>
@@ -95,6 +110,7 @@
 
   <!-- ============ CHAPTER: NUTRITION ============ -->
   <section class="chapter" id="nutrition">
+    <div class="chapter-bg" aria-hidden="true"><svg class="chart chart-bars" viewBox="0 0 1000 400" preserveAspectRatio="none"><line class="chart-goal" x1="0" y1="140" x2="1000" y2="140"/><rect style="--k:0" x="40" y="168" width="64" height="232" rx="6"/><rect style="--k:1" x="180" y="132" width="64" height="268" rx="6"/><rect style="--k:2" x="320" y="154" width="64" height="246" rx="6"/><rect style="--k:3" x="460" y="108" width="64" height="292" rx="6"/><rect style="--k:4" x="600" y="186" width="64" height="214" rx="6"/><rect style="--k:5" x="740" y="138" width="64" height="262" rx="6"/><rect style="--k:6" x="880" y="150" width="64" height="250" rx="6"/></svg></div>
     <div class="section-inner">
       <header class="chapter-head">
         <h2 class="chapter-title">תזונה</h2>
@@ -146,6 +162,7 @@
 
   <!-- ============ CHAPTER: TRAINING ============ -->
   <section class="chapter" id="training">
+    <div class="chapter-bg" aria-hidden="true"><svg class="chart" viewBox="0 0 1000 400" preserveAspectRatio="none"><path class="chart-line" pathLength="1" d="M0 372 H120 V336 H250 V318 H380 V276 H500 V258 H630 V214 H760 V186 H880 V142 H1000"/></svg></div>
     <div class="section-inner">
       <header class="chapter-head">
         <h2 class="chapter-title">אימונים</h2>
@@ -190,6 +207,7 @@
 
   <!-- ============ CHAPTER: PROGRESS ============ -->
   <section class="chapter" id="progress">
+    <div class="chapter-bg" aria-hidden="true"><svg class="chart" viewBox="0 0 1000 400" preserveAspectRatio="none"><path class="chart-line" pathLength="1" d="M0 96 C90 88 150 150 240 150 S380 132 450 196 S600 214 660 250 S800 262 860 300 S960 318 1000 322"/></svg></div>
     <div class="section-inner">
       <header class="chapter-head">
         <h2 class="chapter-title">התקדמות</h2>

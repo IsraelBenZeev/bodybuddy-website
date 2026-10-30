@@ -94,7 +94,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- Scroll-linked ---------- */
-  const lapBar = $('#lapBar');
+  const barbell = $('#barbell');
+  const barFill = $('#barbellFill');
+  const plates = $$('.bb-plate');
+  const download = $('#download');
   const header = $('#siteHeader');
   let ticking = false;
 
@@ -102,13 +105,24 @@ document.addEventListener('DOMContentLoaded', () => {
     ticking = false;
     const doc = document.documentElement;
     const max = Math.max(1, doc.scrollHeight - window.innerHeight);
-    if (lapBar) lapBar.style.transform = `scaleX(${clamp(window.scrollY / max)})`;
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 12);
+
+    // barbell: the shaft fills with the page, a plate pair loads as each chapter starts, the last one at the download
+    if (barbell) {
+      barFill.style.setProperty('--p', clamp(window.scrollY / max).toFixed(3));
+      const marks = [...chapters.map((c) => c.chapter.getBoundingClientRect().top < window.innerHeight * 0.5),
+        download.getBoundingClientRect().top < window.innerHeight * 0.75 || window.scrollY >= max - 2];
+      plates.forEach((p, i) => p.classList.toggle('on', marks[i]));
+      const full = marks.every(Boolean);
+      if (full && !barbell.classList.contains('is-lifted') && !reduced) barbell.classList.add('is-lifted');
+      if (!full) barbell.classList.remove('is-lifted');
+    }
 
     chapters.forEach((c) => {
       const r = c.stepsEl.getBoundingClientRect();
       const f = clamp((window.innerHeight * 0.5 - r.top) / r.height);
       c.stepsEl.style.setProperty('--fill', f.toFixed(3));
+      c.chapter.style.setProperty('--draw', reduced ? '1' : f.toFixed(3));
       // which step is being read: the one under the probe line (middle of the screen on desktop, just under the pinned phone on mobile)
       const col = c.phone.parentElement.getBoundingClientRect();
       const probe = desktop.matches ? window.innerHeight * 0.5 : col.bottom + 90;
