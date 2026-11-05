@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>שותף איתך ב-BodyBuddy</title>
+<meta name="description" content="תוכנית אימון או תרגיל ששותפו איתך ב-BodyBuddy. הורידו את האפליקציה בחינם ופתחו את הקישור בה.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1a2030">
+<link rel="icon" type="image/svg+xml" href="/images/logo-mark.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Karantina:wght@300;400;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/share/share.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand" aria-label="BodyBuddy — לדף הבית">
+      <img src="/images/logo-mark.svg" alt="" class="brand-logo" width="34" height="34">
+      <span class="brand-name">BodyBuddy</span>
+    </a>
+    <span class="share-header-spacer" aria-hidden="true"></span>
+    <div class="header-actions">
+      <a href="#download" class="btn btn-ghost btn-small">הורידו את האפליקציה</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO: the shared thing, inside the app's own wall ============ -->
+  <section class="hero share-hero" aria-live="polite">
+    <div class="wall" aria-hidden="true">
+      <div class="wall-cols">
+        <div class="col col-a"><div class="col-track">
+          <img src="/images/screens/w360/workouts-list.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/exercise-detail.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/body-map.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/workouts-list.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/exercise-detail.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/body-map.jpg" alt="" width="360" height="772">
+        </div></div>
+        <div class="col col-b"><div class="col-track">
+          <img src="/images/screens/w360/workout-session.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/exercises-list.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/profile-workouts.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/workout-session.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/exercises-list.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/profile-workouts.jpg" alt="" width="360" height="772">
+        </div></div>
+        <div class="col col-c"><div class="col-track">
+          <img src="/images/screens/w360/exercise-history.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/diary.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/nutrition-protein.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/exercise-history.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/diary.jpg" alt="" width="360" height="772">
+          <img src="/images/screens/w360/nutrition-protein.jpg" alt="" width="360" height="772">
+        </div></div>
+      </div>
+      <div class="wall-scrim"></div>
+    </div>
+
+    <div class="hero-inner">
+      <h1 class="share-title" id="heroTitle"><span class="share-title-wait">רגע, פותחים את מה ששלחו לכם</span></h1>
+      <p class="hero-tagline" id="heroLine"></p>
+
+      <dl class="share-figures" id="heroFigures" hidden>
+        <div><dt>משך</dt><dd id="figTime"></dd></div>
+        <div><dt>רמת קושי</dt><dd id="figDifficulty"></dd></div>
+        <div><dt>תרגילים</dt><dd id="figCount"></dd></div>
+      </dl>
+
+      <div class="hero-cta" id="heroCta" hidden>
+        <a href="#download" class="btn btn-primary"><span>להורדה חינם</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="M6 11l6 6 6-6"/><path d="M5 20h14"/></svg>
+        </a>
+        <a href="#details" class="btn btn-link" id="heroDetailsLink">לתוכנית המלאה
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg>
+        </a>
+      </div>
+
+      <a href="/" class="btn btn-ghost" id="heroHome" hidden>לדף הבית של BodyBuddy</a>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER: the plan ============ -->
+  <section class="chapter share-chapter" id="details" hidden>
+    <div class="chapter-bg" aria-hidden="true">
+      <svg class="chart chart-bars" id="weekChart" viewBox="0 0 1000 400" preserveAspectRatio="none"></svg>
+    </div>
+    <div class="section-inner">
+      <header class="chapter-head" id="chapterHead">
+        <h2 class="chapter-title" id="chapterTitle">התוכנית</h2>
+        <p class="chapter-sub" id="chapterSub"></p>
+      </header>
+
+      <!-- plan -->
+      <div class="share-plan" id="planBody" hidden>
+        <ul class="share-week" id="planDays" aria-label="ימי האימון בשבוע"></ul>
+        <ul class="share-chips" id="planAreas" aria-label="אזורים בתוכנית" hidden></ul>
+        <ol class="share-ex" id="planExercises" aria-label="התרגילים בתוכנית לפי הסדר"></ol>
+        <p class="share-note" id="planSkipped" hidden></p>
+      </div>
+
+      <!-- exercise -->
+      <div class="share-exercise" id="exBody" hidden>
+        <figure class="share-shot" id="exMedia" hidden></figure>
+        <div class="share-exercise-copy">
+          <ul class="share-chips" id="exAreas" aria-label="אזורים ושרירים" hidden></ul>
+          <ul class="share-chips share-chips-quiet" id="exEquip" aria-label="ציוד" hidden></ul>
+          <ol class="share-steps" id="exInstr" aria-label="הוראות ביצוע" hidden></ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOAD ============ -->
+  <section class="download share-download" id="download">
+    <div class="section-inner">
+      <img src="/images/logo-mark.svg" alt="" class="download-mark" width="96" height="94">
+      <h2 class="section-title" id="ctaTitle">קחו את BodyBuddy איתכם</h2>
+      <p class="download-sub" id="ctaText">הורידו את האפליקציה בחינם, התחברו, ולחצו שוב על הקישור ששלחו לכם.</p>
+      <div class="store-buttons">
+        <a class="btn btn-store" id="playLink" href="https://play.google.com/store/apps/details?id=com.ibz1330.bodybuddy" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.7c-.4.4-.6.9-.6 1.6v15.4c0 .7.2 1.2.6 1.6l.1.1L13 12.2v-.4L3.7 2.6l-.1.1z"/><path d="M16.2 15.4l-3.2-3.2v-.4l3.2-3.2 3.6 2.1c1 .6 1 1.6 0 2.2l-3.6 2.5z" opacity=".75"/><path d="M16.2 15.4L13 12.2 3.7 21.4c.4.4 1 .4 1.7.1l10.8-6.1z"/><path d="M16.2 8.6L5.4 2.5c-.7-.3-1.3-.3-1.7.1L13 12l3.2-3.4z" opacity=".55"/></svg>
+          <span class="store-text"><small>להורדה חינם ב־</small>Google Play</span>
+        </a>
+        <a class="btn btn-ghost" id="openInApp" href="#" hidden>כבר מותקנת? פתחו באפליקציה</a>
+      </div>
+      <ol class="share-howto" aria-label="איך מקבלים את זה באפליקציה">
+        <li>מורידים את BodyBuddy</li>
+        <li>נרשמים או מתחברים</li>
+        <li>לוחצים שוב על הקישור ששלחו לכם</li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/images/logo-mark.svg" alt="" class="footer-logo" width="26" height="26">
+      <span>BodyBuddy</span>
+    </div>
+    <nav class="footer-links" aria-label="קישורי פוטר">
+      <a href="/privacypolicy/" target="_blank" rel="noopener">מדיניות פרטיות</a>
+      <a href="/termsofservice/" target="_blank" rel="noopener">תנאי שימוש</a>
+      <a href="/blog/">בלוג</a>
+      <a href="mailto:bodybuddysupport@gmail.com">תמיכה: bodybuddysupport@gmail.com</a>
+    </nav>
+    <p class="copyright">© <span id="year">2026</span> BodyBuddy — כל הזכויות שמורות</p>
+  </div>
+</footer>
+
+<script src="/share/share.js"></script>
+</body>
+</html>

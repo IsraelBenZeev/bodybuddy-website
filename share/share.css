@@ -1,0 +1,215 @@
+/* ===== BodyBuddy — share page =====
+   Same world as the homepage (/style.css): the app's screen wall behind the hero,
+   Karantina with the painted lime stroke, one chapter whose background chart is the plan's real week. */
+
+[hidden] { display: none !important; }
+
+/* ---------- Hero ---------- */
+
+.share-hero { min-height: min(760px, calc(100svh - 58px)); }
+
+.share-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3.6rem, 12vw, 6rem);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  color: var(--heading);
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  padding-bottom: 20px;
+  margin-bottom: 22px;
+  position: relative;
+}
+/* the painted stroke, centred under the hero title */
+.share-title::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  margin-inline: auto;
+  bottom: 0;
+  width: 84px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--green);
+  transform-origin: center;
+  transition: transform 0.9s var(--ease-out) 0.15s;
+}
+.share-hero:not(.is-ready) .share-title::after { transform: scaleX(0); }
+.share-title-wait { font-family: var(--font-body); font-size: 1.15rem; font-weight: 500; color: var(--text-2); letter-spacing: 0; }
+
+.share-hero .hero-tagline:empty { display: none; }
+
+/* three plan figures, set in the display face like the app's own numbers */
+.share-figures {
+  display: flex;
+  justify-content: center;
+  gap: clamp(20px, 6vw, 48px);
+  margin: -8px 0 30px;
+}
+.share-figures div { display: flex; flex-direction: column-reverse; align-items: center; }
+.share-figures dd {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.2rem, 7vw, 3rem);
+  line-height: 1;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.share-figures dt { color: var(--text-2); font-size: 0.85rem; margin-top: 4px; }
+.share-figures div + div { padding-inline-start: clamp(20px, 6vw, 48px); border-inline-start: 1px solid var(--line); }
+
+.js .share-figures:not([hidden]) { animation: fadeUp 1s var(--ease-out) 0.5s both; }
+
+/* ---------- Chapter ---------- */
+
+.share-chapter { padding-bottom: 56px; }
+.share-chapter .chapter-head { max-width: 640px; }
+/* the week chart: 7 bars, training days full height (data from the plan, not decoration) */
+.share-chapter .chart-bars rect { opacity: 0.05; }
+.share-chapter .chart-bars rect.is-on { opacity: 0.1; }
+
+.share-plan, .share-exercise { display: flex; flex-direction: column; gap: 28px; max-width: 720px; }
+
+.share-week { list-style: none; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; max-width: 460px; }
+.share-week li {
+  aspect-ratio: 1;
+  max-width: 100%;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+.share-week li.on { background: var(--green-soft); border-color: var(--green-line); color: var(--green); }
+
+.share-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.share-chips li {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--green-line);
+  color: var(--heading);
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+.share-chips-quiet li { border-color: var(--line); color: var(--text); }
+
+/* exercises in plan order: the number is the sequence, painted like the homepage's step rail */
+.share-ex { list-style: none; counter-reset: ex; display: flex; flex-direction: column; }
+.share-ex li {
+  counter-increment: ex;
+  display: grid;
+  grid-template-columns: 44px 64px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.share-ex li:last-child { border-bottom: 0; }
+.share-ex li::before {
+  content: counter(ex);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--green);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+.share-ex .thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: #000;
+  border: 1px solid var(--line);
+  object-fit: contain;
+}
+.share-ex .thumb-empty { display: block; }
+.share-ex .meta { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.share-ex .name { color: var(--heading); font-weight: 700; font-size: 1.05rem; line-height: 1.35; overflow-wrap: anywhere; }
+.share-ex .parts { color: var(--text-2); font-size: 0.88rem; }
+
+.share-note { color: var(--text-2); font-size: 0.95rem; border-top: 1px solid var(--line); padding-top: 16px; }
+
+/* exercise: the image in the same rounded frame as the homepage screenshots */
+.share-exercise { flex-direction: row; align-items: flex-start; gap: 48px; max-width: none; }
+.share-shot {
+  flex: none;
+  width: min(380px, 100%);
+  aspect-ratio: 4 / 3;
+  max-width: 100%;
+  background: #000;
+  border-radius: 26px;
+  border: 1px solid var(--line);
+  padding: 10px;
+  box-shadow: 0 24px 40px -18px rgba(0, 0, 0, 0.7);
+}
+.share-shot img { width: 100%; height: 100%; object-fit: contain; }
+.share-exercise-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+
+.share-steps { list-style: none; counter-reset: st; display: flex; flex-direction: column; gap: 14px; max-width: 62ch; margin-top: 8px; }
+.share-steps li { counter-increment: st; display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 12px; color: var(--text); font-size: 1.05rem; }
+.share-steps li::before {
+  content: counter(st);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--green);
+  text-align: center;
+}
+
+/* ---------- Download ---------- */
+
+.share-download { padding-top: 72px; border-top: 1px solid var(--line); }
+.share-howto {
+  list-style: none;
+  counter-reset: h;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 36px;
+  color: var(--text-2);
+  font-size: 0.95rem;
+}
+.share-howto li { counter-increment: h; display: flex; align-items: center; gap: 8px; }
+.share-howto li::before {
+  content: counter(h);
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--green-line);
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .share-exercise { flex-direction: column; gap: 28px; }
+  .share-shot { width: 100%; }
+}
+
+@media (max-width: 640px) {
+  .share-hero { min-height: min(640px, calc(100svh - 58px)); }
+  /* the homepage hangs its barbell in the middle column; this page has none, so the actions take the second column */
+  .share-header-spacer { display: none; }
+  .share-figures { gap: 14px; width: 100%; }
+  .share-figures div { flex: 1; min-width: 0; }
+  .share-figures div + div { padding-inline-start: 14px; }
+  .share-figures dd { font-size: 1.7rem; white-space: normal; text-wrap: balance; }
+  .share-figures dt { font-size: 0.78rem; }
+  .share-ex li { grid-template-columns: 34px 56px minmax(0, 1fr); gap: 12px; }
+  .share-ex .thumb { width: 56px; height: 56px; }
+  .share-ex li::before { font-size: 1.9rem; }
+  .share-week { gap: 6px; }
+  .share-week li { font-size: 0.85rem; }
+  .share-howto { flex-direction: column; align-items: center; }
+}

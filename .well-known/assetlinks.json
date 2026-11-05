@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ibz1330.bodybuddy",
+      "sha256_cert_fingerprints": [
+        "A1:EC:B6:24:F6:89:13:71:9E:71:CB:25:7B:3F:AC:53:3C:CF:2B:7D:BB:0D:D6:66:A8:37:4F:26:A1:43:9E:9B"
+      ]
+    }
+  }
+]
