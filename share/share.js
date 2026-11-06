@@ -29,7 +29,8 @@
     if (!url) return null;
     var marker = '/upload/';
     var i = url.indexOf(marker);
-    if (url.indexOf('res.cloudinary.com') === -1 || i === -1) return url;
+    // כתובת חתומה (s--...--) כבר מגיעה מהשרת בגודל ובסימן המים הנכונים; שינוי בה ישבור את החתימה
+    if (url.indexOf('res.cloudinary.com') === -1 || i === -1 || url.indexOf('/s--') !== -1) return url;
     var at = i + marker.length;
     return url.slice(0, at) + 'f_auto,q_auto,w_' + width + '/' + url.slice(at);
   }
