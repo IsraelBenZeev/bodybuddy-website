@@ -102,12 +102,24 @@
 .share-ex li {
   counter-increment: ex;
   display: grid;
-  grid-template-columns: 44px 64px minmax(0, 1fr);
+  grid-template-columns: 44px 64px minmax(0, 1fr) 20px;
   align-items: center;
   gap: 14px;
   padding: 14px 0;
   border-bottom: 1px solid var(--line);
+  position: relative;
 }
+/* the whole row opens the exercise page */
+.share-ex a.name::after { content: ""; position: absolute; inset: 0; border-radius: 16px; }
+.share-ex a.name:focus-visible { outline: none; }
+.share-ex a.name:focus-visible::after { outline: 2px solid var(--green); outline-offset: 2px; }
+.share-ex .go {
+  width: 10px; height: 10px; justify-self: center;
+  border-inline-end: 2px solid var(--text-2); border-bottom: 2px solid var(--text-2);
+  transform: rotate(45deg); transition: transform 0.4s var(--ease-out), border-color 0.3s;
+}
+.share-ex li:hover .go { border-color: var(--green); transform: translateX(-4px) rotate(45deg); }
+.share-ex li:hover .name { color: var(--green); }
 .share-ex li:last-child { border-bottom: 0; }
 .share-ex li::before {
   content: counter(ex);
@@ -147,7 +159,7 @@
   padding: 10px;
   box-shadow: 0 24px 40px -18px rgba(0, 0, 0, 0.7);
 }
-.share-shot img { width: 100%; height: 100%; object-fit: contain; }
+.share-shot img, .share-shot video { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 18px; }
 .share-exercise-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 
 .share-steps { list-style: none; counter-reset: st; display: flex; flex-direction: column; gap: 14px; max-width: 62ch; margin-top: 8px; }

@@ -136,7 +136,7 @@
     document.title = title + ' · BodyBuddy';
 
     setHero(title, plan.sender_name
-      ? plan.sender_name + ' שיתף איתך את תוכנית האימון הזו.'
+      ? 'תוכנית האימון של ' + plan.sender_name + ', ששותפה איתך.'
       : 'שיתפו איתך את תוכנית האימון הזו.');
     $('figTime').textContent = formatMinutes(plan.time);
     $('figDifficulty').textContent = (plan.difficulty || 0) + '/10';
@@ -171,9 +171,13 @@
         li.appendChild(el('span', 'thumb thumb-empty'));
       }
       var meta = el('div', 'meta');
-      meta.appendChild(el('span', 'name', e.name_he));
+      // כל השורה לחיצה (ה-::after של הקישור נמתח עליה) ופותחת את דף התרגיל עם הסרטון וההוראות
+      var link = el('a', 'name', e.name_he);
+      link.href = '/share/?e=' + encodeURIComponent(e.exerciseId);
+      meta.appendChild(link);
       if (e.bodyParts_he && e.bodyParts_he.length) meta.appendChild(el('span', 'parts', e.bodyParts_he.join(' · ')));
       li.appendChild(meta);
+      li.appendChild(el('span', 'go'));
       list.appendChild(li);
     });
 
@@ -202,13 +206,34 @@
     var areas = unique((ex.bodyParts_he || []).concat(ex.targetMuscles_he || []));
     $('chapterSub').textContent = areas.length ? 'עובד על ' + areas.join(', ') + '.' : '';
 
+    // סרטון (כמו באפליקציה: מושתק ובלולאה), עם התמונה כ-poster. אין סרטון או שהוא נכשל: התמונה בלבד
     var src = thumb(ex.imageUrl, 800);
-    if (src) {
+    var media = $('exMedia');
+    function showImage() {
+      if (!src) { media.hidden = true; return; }
+      media.textContent = '';
       var img = el('img');
       img.src = src;
       img.alt = 'איור של התרגיל ' + name;
-      $('exMedia').appendChild(img);
-      show('exMedia');
+      media.appendChild(img);
+      media.hidden = false;
+    }
+    if (ex.videoUrl) {
+      var video = el('video');
+      video.src = thumb(ex.videoUrl, 720);
+      if (src) video.poster = src;
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.preload = 'metadata';
+      video.setAttribute('aria-label', 'סרטון של התרגיל ' + name);
+      if (reduced) { video.controls = true; } else { video.autoplay = true; }
+      video.addEventListener('error', showImage);
+      media.appendChild(video);
+      media.hidden = false;
+    } else {
+      showImage();
     }
     // the areas are already in the chapter line; chips carry only the equipment
     fillChips('exEquip', ex.equipments_he);
