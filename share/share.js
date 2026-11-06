@@ -165,7 +165,7 @@
       var src = thumb(e.imageUrl, 160);
       if (src) {
         var img = el('img', 'thumb');
-        img.src = src; img.alt = ''; img.loading = 'lazy'; img.width = 64; img.height = 64;
+        img.src = src; img.alt = ''; img.loading = 'lazy'; img.width = 64; img.height = 64; img.draggable = false;
         li.appendChild(img);
       } else {
         li.appendChild(el('span', 'thumb thumb-empty'));
@@ -215,9 +215,12 @@
       var img = el('img');
       img.src = src;
       img.alt = 'איור של התרגיל ' + name;
+      img.draggable = false;
       media.appendChild(img);
       media.hidden = false;
     }
+    // מורידים את דרכי ההורדה הקלות (תפריט הקשר, לחיצה ארוכה, כפתור הורדה בנגן). זה לא נועל את הקובץ
+    media.addEventListener('contextmenu', function (e) { e.preventDefault(); });
     if (ex.videoUrl) {
       var video = el('video');
       video.src = thumb(ex.videoUrl, 720);
@@ -228,6 +231,10 @@
       video.setAttribute('playsinline', '');
       video.preload = 'metadata';
       video.setAttribute('aria-label', 'סרטון של התרגיל ' + name);
+      video.setAttribute('controlsList', 'nodownload noplaybackrate noremoteplayback');
+      video.disablePictureInPicture = true;
+      video.setAttribute('disablepictureinpicture', '');
+      video.draggable = false;
       if (reduced) { video.controls = true; } else { video.autoplay = true; }
       video.addEventListener('error', showImage);
       media.appendChild(video);

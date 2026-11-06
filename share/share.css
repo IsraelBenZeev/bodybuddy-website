@@ -160,6 +160,12 @@
   box-shadow: 0 24px 40px -18px rgba(0, 0, 0, 0.7);
 }
 .share-shot img, .share-shot video { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 18px; }
+/* no easy save: a transparent layer over the media takes the long-press / right-click,
+   so the browser offers no "save image / download video". Hidden when the video shows controls (reduced motion) */
+.share-shot { position: relative; -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
+.share-shot::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.share-shot:has(video[controls])::after { display: none; }
+.share-ex .thumb { -webkit-touch-callout: none; user-select: none; -webkit-user-select: none; }
 .share-exercise-copy { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
 
 .share-steps { list-style: none; counter-reset: st; display: flex; flex-direction: column; gap: 14px; max-width: 62ch; margin-top: 8px; }
