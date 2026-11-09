@@ -36,7 +36,27 @@
   transition: transform 0.9s var(--ease-out) 0.15s;
 }
 .share-hero:not(.is-ready) .share-title::after { transform: scaleX(0); }
-.share-title-wait { font-family: var(--font-body); font-size: 1.15rem; font-weight: 500; color: var(--text-2); letter-spacing: 0; }
+/* loading: the app's logo loader (elasticTrail) — the mark spins with an elastic overshoot, two faint ghosts trail behind */
+.share-loading { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 24px 0 8px; }
+.share-loading[hidden] { display: none; }
+.bb-loader { position: relative; width: 72px; height: 72px; }
+.bb-loader > span { position: absolute; inset: 0; }
+.bb-loader svg { display: block; width: 100%; height: 100%; overflow: visible; animation: bb-spin 1.3s linear infinite; }
+.bb-loader-ghost-1 { opacity: 0.16; transform: rotate(-16deg); }
+.bb-loader-ghost-2 { opacity: 0.07; transform: rotate(-30deg); }
+@keyframes bb-spin {
+  0%   { transform: rotate(0deg);   animation-timing-function: cubic-bezier(0.3, 0.6, 0.5, 1); }
+  45%  { transform: rotate(378deg); animation-timing-function: ease-in-out; }
+  68%  { transform: rotate(354deg); animation-timing-function: ease-in-out; }
+  86%  { transform: rotate(362deg); animation-timing-function: ease-in-out; }
+  100% { transform: rotate(360deg); }
+}
+.share-loading-text { font-family: var(--font-body); font-size: 1.15rem; font-weight: 500; color: var(--text-2); margin: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .bb-loader svg { animation: bb-pulse 1.6s ease-in-out infinite; }
+  .bb-loader-ghost { display: none; }
+  @keyframes bb-pulse { 50% { opacity: 0.55; } }
+}
 
 .share-hero .hero-tagline:empty { display: none; }
 

@@ -55,8 +55,13 @@
     if (list.children.length) show(listId);
   }
 
+  // the loader names what is coming, so the wait reads as "your plan / exercise is on its way"
+  $('heroLoadingText').textContent = token ? 'טוען תוכנית אימון…' : exerciseId ? 'טוען תרגיל…' : 'טוען…';
+
   function setHero(title, line) {
     var h = $('heroTitle');
+    $('heroLoading').hidden = true;
+    h.hidden = false;
     h.textContent = title;
     $('heroLine').textContent = line || '';
     // the stroke under the title paints in once the real title is there
