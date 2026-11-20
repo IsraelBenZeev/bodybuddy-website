@@ -397,6 +397,16 @@ html:not(.js) .chapter { --draw: 1; }
   overflow: hidden;
   background: var(--surface);
 }
+/* hide the screenshots' status bar (time, battery), which the rounded corners clipped: a strip the colour of the frame covers exactly that band, so no app content is lost */
+.js .phone-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3.2%;
+  background: #10151f;
+  z-index: 3;
+  pointer-events: none;
+}
 .phone-screen .scr {
   position: absolute;
   inset: 0;
