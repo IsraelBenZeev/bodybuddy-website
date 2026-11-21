@@ -38,8 +38,8 @@
 
 ### בקרוב (דקות)
 - [ ] ללחוץ פעם אחת על כפתור Google Play באתר, ואז ב-Analytics (ניהול ← אירועים) לסמן את `play_store_click` כ-**Key event**.
-- [ ] ב-Search Console: בקשת אינדוקס ל-`/blog/tdee/`, ל-4 המאמרים החדשים ול-`/website-privacy/`.
-- [ ] לבדוק ב-Search Console שה-sitemap עובד ושהדפים החדשים התגלו.
+- [x] ב-Search Console נשלחה בקשת אינדוקס ב-22.11 ל: דף הבית (אחרי ה-FAQ), `/blog/tdee/`, `/blog/protein/`, `/blog/macros/`, `/blog/calorie-counting/`, `/blog/beginner-workout/`, `/website-privacy/`. כולן אושרו ("התקבלה בקשה ליצירת אינדקס"). לאינדוקס עצמו אין זמן מובטח (ימים עד שבועות). יש מכסה יומית לבקשות.
+- [ ] לבדוק ב-Search Console בעוד כמה ימים שה-sitemap עובד ושהדפים החדשים התגלו ואונדקסו (בדיקת URL או "דפים").
 - [ ] להדביק את הקישור ב-opengraph.xyz ובוואטסאפ ולוודא שתמונת השיתוף החדשה מוצגת (ייתכן מטמון ישן).
 
 ### החלטות ובדיקות
