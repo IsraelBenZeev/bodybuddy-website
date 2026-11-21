@@ -31,7 +31,7 @@ body { overflow-x: clip; }
 }
 .blog-sub { font-size: 1.2rem; color: var(--text); margin-top: 14px; max-width: 520px; text-wrap: balance; }
 
-.posts { padding-bottom: 96px; }
+.posts { padding-bottom: 96px; display: flex; flex-direction: column; gap: 28px; }
 
 .post-feature {
   position: relative;

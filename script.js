@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
+  /* ---------- Analytics: count Google Play button clicks as a key event ---------- */
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest && e.target.closest('a[href*="play.google.com"]');
+    if (a && typeof window.gtag === 'function') window.gtag('event', 'play_store_click', { link_url: a.href });
+  });
+
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -59,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const src = $('.step-shot', step);
       const img = document.createElement('img');
       img.className = 'scr' + (i === 0 ? ' is-active' : '');
+      img.loading = 'lazy';
       img.src = src.currentSrc || src.src;
       img.alt = '';
       img.decoding = 'async';
