@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /share/
+Disallow: /privecypolicy/
+
+Sitemap: https://bodybuddy.fitness/sitemap.xml
