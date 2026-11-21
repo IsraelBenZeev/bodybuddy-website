@@ -9,6 +9,7 @@
 - H1 עם טקסט אמיתי: "BodyBuddy — תזונה, אימונים והתקדמות במקום אחד". הטקסט מוסתר חזותית (`.visually-hidden`) ולצידו הלוגו.
 - `canonical`, `robots`, Open Graph, Twitter Card (`summary_large_image`).
 - JSON-LD: `MobileApplication`, `WebSite`, `Organization`.
+- אזור שאלות נפוצות (10 שאלות, אקורדיון `details`) לפני אזור ההורדה, עם JSON-LD מסוג `FAQPage`. אם משהו בתשובות משתנה (מנוי, iOS, הרשמה), לעדכן גם את ה-HTML וגם את ה-JSON-LD.
 - `fetchpriority="low"` ו-`decoding="async"` לתמונות הקיר. תמונות המסכים בפרקים נטענות lazy (`script.js`).
 
 ### קבצים ודפים חדשים

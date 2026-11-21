@@ -438,6 +438,50 @@ html:not(.js) .chapter { --draw: 1; }
 .more h3 { grid-area: title; font-family: var(--font-display); font-weight: 700; font-size: 2.2rem; line-height: 1.1; color: var(--heading); }
 .more p { grid-area: text; color: var(--text); }
 
+/* ---------- FAQ: hairline rows, one plus that turns into a minus ---------- */
+
+.faq { padding: 72px 0 24px; }
+.faq-inner { max-width: 820px; }
+.faq-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4rem);
+  line-height: 1;
+  color: var(--heading);
+  margin-bottom: 36px;
+}
+.faq-title::after { content: ""; display: block; width: 56px; height: 5px; border-radius: 3px; background: var(--green); margin-top: 16px; }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item:first-child { border-top: 1px solid var(--line); }
+.faq-item summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 22px 4px;
+  min-height: 44px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  color: var(--heading);
+  transition: color 0.3s;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary:hover, .faq-item[open] summary { color: var(--green); }
+.faq-item summary:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; border-radius: 6px; }
+.faq-plus { position: relative; flex: none; width: 20px; height: 20px; }
+.faq-plus::before, .faq-plus::after { content: ""; position: absolute; inset: 9px 1px auto; height: 2px; border-radius: 1px; background: currentColor; transition: transform 0.45s var(--ease-out); }
+.faq-plus::after { transform: rotate(90deg); }
+.faq-item[open] .faq-plus::after { transform: rotate(0deg); }
+.faq-answer { padding: 0 4px 24px; max-width: 62ch; }
+.faq-answer p { color: var(--text); font-size: 1.05rem; line-height: 1.7; }
+.faq-answer a { color: var(--green); text-underline-offset: 4px; text-decoration: underline; }
+.faq-answer a:hover { color: var(--heading); }
+.faq-item[open] .faq-answer { animation: faqIn 0.5s var(--ease-out); }
+@keyframes faqIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
 /* ---------- Download ---------- */
 
 .download { padding: 90px 24px 120px; text-align: center; }
