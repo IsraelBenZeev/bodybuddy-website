@@ -93,6 +93,8 @@ body { overflow-x: clip; }
 .breadcrumb { font-size: 0.88rem; color: var(--text-2); margin-bottom: 26px; }
 .breadcrumb a { color: var(--green); }
 .breadcrumb a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.post-section p a, .post-section li a, .summary a { color: var(--green); text-decoration: underline; text-underline-offset: 4px; }
+.post-section p a:hover, .post-section li a:hover, .summary a:hover { color: var(--heading); }
 .article-title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -186,6 +188,15 @@ td.num { color: var(--heading); font-weight: 700; font-variant-numeric: tabular-
 .toc a.is-active { color: var(--heading); font-weight: 700; }
 .toc a.is-active::before { background: var(--green); border-color: var(--green); transform: scale(1.2); }
 .js .toc:empty { display: none; }
+
+/* ---------- Related articles ---------- */
+
+.related-posts { margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line); }
+.related-posts h2 { font-family: var(--font-display); font-weight: 700; font-size: 2rem; line-height: 1.1; color: var(--heading); margin-bottom: 18px; }
+.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.related-card { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; color: var(--heading); font-weight: 700; line-height: 1.4; transition: border-color 0.3s; }
+.related-card span { color: var(--text-2); font-weight: 400; font-size: 0.82rem; }
+.related-card:hover, .related-card:focus-visible { border-color: var(--green-line); outline: none; }
 
 /* ---------- Article call to action ---------- */
 
