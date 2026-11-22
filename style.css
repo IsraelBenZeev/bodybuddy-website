@@ -225,7 +225,7 @@ main, header, footer { position: relative; z-index: 1; }
   font-weight: 700;
   text-wrap: pretty;
 }
-.about-text .w { color: rgba(200, 208, 219, 0.22); transition: color 0.35s ease; }
+.about-text .w { color: rgba(200, 208, 219, 0.6); transition: color 0.35s ease; }
 .about-text .w.on { color: var(--heading); }
 .about-text .w.on.accent-text { color: var(--green); }
 
@@ -530,7 +530,8 @@ html:not(.js) .chapter { --draw: 1; }
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; font-size: 0.92rem; color: var(--text); }
 .footer-links a { text-underline-offset: 4px; }
 .footer-links a:hover { color: var(--green); text-decoration: underline; }
-.footer-social { display: flex; align-items: center; gap: 10px; }
+.footer-social { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; padding-bottom: 24px; margin-bottom: 4px; border-bottom: 1px solid var(--line); }
+.footer-social-label { color: var(--text-2); font-size: 0.9rem; font-weight: 500; margin-inline-end: 6px; }
 .social-icon { display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); color: var(--green); transition: background 0.2s, border-color 0.2s, transform 0.2s; }
 .social-icon svg { width: 20px; height: 20px; }
 a.social-icon:hover, a.social-icon:focus-visible { background: var(--green-soft); border-color: var(--green-line); transform: translateY(-2px); outline: none; }

@@ -66,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = document.createElement('img');
       img.className = 'scr' + (i === 0 ? ' is-active' : '');
       img.loading = 'lazy';
-      img.src = src.currentSrc || src.src;
+      if (src.srcset) { img.srcset = src.srcset; img.sizes = src.sizes; }
+      img.src = src.getAttribute('src');
       img.alt = '';
       img.decoding = 'async';
       screen.appendChild(img);
